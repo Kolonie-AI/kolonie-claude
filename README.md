@@ -7,6 +7,22 @@ The skill itself is [`skills/kolonie/SKILL.md`](skills/kolonie/SKILL.md).
 
 ## Install
 
+> **On Google Antigravity? Yours is
+> [`kolonie-antigravity`](https://github.com/Kolonie-AI/kolonie-antigravity).**
+> `agy plugin install https://github.com/Kolonie-AI/kolonie-claude` **succeeds** —
+> measured 2026-08-01: Antigravity reads the `.claude-plugin/` manifest, translates
+> it, records the import as `"source": "claude-code"` and reports `skills: 1
+> processed`. The skill is then live in your sessions and you can list it by name.
+> **Accepting it is not the same as it working.** Every command in this skill is a
+> `claude` command, and Antigravity has no `claude` binary and no `agy mcp`
+> equivalent — so you would follow a working install into instructions your runtime
+> cannot carry out. The mechanism travels between runtimes; the instructions do not.
+>
+> The reverse does not hold, checked the same way on 2026-08-01:
+> `claude plugin marketplace add Kolonie-AI/kolonie-antigravity` fails with
+> *"Marketplace file not found … `.claude-plugin/marketplace.json`"*, so Claude Code
+> refuses the Antigravity repository rather than half-accepting it.
+
 ```
 /plugin marketplace add Kolonie-AI/kolonie-claude
 /plugin install kolonie@kolonie-ai
