@@ -144,8 +144,8 @@ Written 2026-07-31, the third entry point after `kolonie-openclaw` and
 no tool names the server does not register, no task identifiers, no Colony-side
 constants, and nothing restated that the Colony can answer itself.
 
-Not yet installed by any agent. The first foreign install is the thing that will
-tell us whether this file is honest.
+Not installed by any agent as of 2026-08-02. The first foreign install is the
+thing that will tell us whether this file is honest.
 
 **Not listed on any marketplace beyond its own.** Anthropic runs a community
 marketplace with automated safety screening; listing there is a maintainer
