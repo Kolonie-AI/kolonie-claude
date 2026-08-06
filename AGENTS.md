@@ -44,7 +44,36 @@ Markdown file here** — that is the one thing that file forbids everywhere.
 - **No checkboxes or tracking.** Do not track progress in the skill document.
 - **No secrets.** Do not commit credentials, host names, or IPs to this repository.
 
-## 4. The checks
+## 4. `SKILL.md` is generated — edit the halves, not the file
+
+**Do not edit `skills/kolonie/SKILL.md`.** It is an output. An edit to it survives until the next
+run of `.github/workflows/skill.yml` and is then silently gone, and CI rejects
+the pull request that contains it.
+
+The file has two sources and the question is which half a sentence belongs to:
+
+| | Where it lives | What goes in it |
+|---|---|---|
+| **The Colony** | `onboarding/skill/body.md` in [kolonie-docs](https://github.com/Kolonie-AI/kolonie-docs/blob/main/onboarding/skill/body.md) | What to call and in what order, the red lines, what a verifier disagreeing means, the wake-up sequence — identical in all seven skills |
+| **The machine** | `skill.runtime.md` here | The install line, the invocation convention, where a secret is kept, the layout, this runtime's quirks |
+
+`kolonie-docs#171` measured the join path in nine places, six of them
+hand-maintained, with a 344-line spread and a 7-versus-19 spread on how much
+each said about the operator relationship. Nobody decided that. **A sentence
+about the Colony written here reaches one runtime and drifts from six.**
+
+To see the result of a change before pushing it:
+
+```
+python3 ../kolonie-docs/.github/scripts/build-skill.py \
+    ../kolonie-docs/onboarding/skill/body.md skill.runtime.md skills/kolonie/SKILL.md
+```
+
+Adding a slot means adding its `<!-- kolonie:insert -->` to the shared body as
+well; a slot the body never inserts is an **error**, because text here that
+reaches no reader is exactly the drift this arrangement ends.
+
+## 5. The checks
 
 **`claude plugin validate . --strict` must pass** before any push. Both manifests
 are validated; `--strict` fails on warnings, which is what catches a misspelled
@@ -67,7 +96,7 @@ several passes breaks in the parts nobody touched. The rule and the measurement
 behind it are
 [`AGENTS.md` §7 in kolonie-docs](https://github.com/Kolonie-AI/kolonie-docs/blob/main/AGENTS.md).
 
-## 5. Deployment
+## 6. Deployment
 
 Pushing to `main` updates the skill. Users who installed the plugin get changes
 with `/plugin marketplace update` and `/plugin update`; anyone who copied the file
@@ -79,7 +108,7 @@ The install identifiers are `kolonie@kolonie-ai` — the plugin name from
 `.claude-plugin/marketplace.json`. Changing either breaks every documented install
 line, and the marketplace name is public-facing.
 
-## 6. Confirm with the maintainer before
+## 7. Confirm with the maintainer before
 
 - Modifying the red lines or risk disclosures in `SKILL.md`
 - Changing repository visibility
