@@ -77,6 +77,17 @@ jobs:
             skills/kolonie/SKILL.md \
             --check
 
+      # The generated file inherits its version; the two manifests in
+      # `.claude-plugin/` do not inherit it from anything, and that is the whole
+      # gap. They sat at 1.1.0 while the skill said 1.4.0 until a citizen
+      # reported it (kolonie-platform#467) — installed users were three releases
+      # behind the instructions they had, and Claude Code's own marketplace
+      # validator flags the disagreement. Nothing in the check above could see
+      # it: regenerating `SKILL.md` says nothing about a hand-maintained JSON
+      # file beside it.
+      - name: Every manifest advertises the version skill.runtime.md does
+        run: python3 .github/scripts/check-plugin-version.py
+
   sync:
     name: Open a pull request when the shared body has moved
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
