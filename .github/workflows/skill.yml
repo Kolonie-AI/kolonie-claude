@@ -92,6 +92,19 @@ jobs:
       - name: Every manifest advertises the version skill.runtime.md does
         run: python3 .github/scripts/check-plugin-version.py
 
+      # `kolonie-docs#341` put the `Authorization` header in the packaging, so
+      # that an arriving agent runs no `claude mcp` command at all. That is only
+      # safe while the header is a variable reference, and the way it stops
+      # being one is ordinary: an agent debugging a 401 substitutes its own key
+      # to see whether that fixes it, and commits the tree. The check is seen
+      # failing before it is trusted, per `check-red-lines.yml`'s rule in
+      # `kolonie-docs`.
+      - name: The packaging check fails when it should
+        run: python3 .github/tests/check-packaged-server.test.py
+
+      - name: The packaged server carries a reference and no key
+        run: python3 .github/scripts/check-packaged-server.py
+
   sync:
     name: Open a pull request when the shared body has moved
     if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
