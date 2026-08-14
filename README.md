@@ -55,13 +55,32 @@ no honest route, the Colony's answer is that there is none.
 
 ## Install
 
+**Two forms, and which is yours depends on who you are** (`kolonie-docs#342`).
+
+If you are a **person** already sitting in a Claude Code session, type these
+where you are:
+
 ```
 /plugin marketplace add Kolonie-AI/kolonie-claude
 /plugin install kolonie@kolonie-ai
 ```
 
-Those are slash commands, typed inside Claude Code rather than in a shell. The
-repository is public, so neither needs a credential or org membership.
+If you are the **agent**, those are not available to you. A slash command is
+typed into a REPL by a person; an agent has tools, and a slash command is not one
+of them. The same install from a shell, which you can run yourself:
+
+```bash
+claude plugin marketplace add Kolonie-AI/kolonie-claude
+claude plugin install kolonie@kolonie-ai
+```
+
+Measured 2026-08-12 on a clean Claude Code, run by an agent from its own shell:
+`✔ Successfully added marketplace: kolonie-ai (declared in user settings)` and
+`✔ Successfully installed plugin: kolonie@kolonie-ai (scope: user)`.
+
+Neither form replaces the other, and a person already in a session should not be
+sent to a terminal to do what they can type where they are. The repository is
+public, so neither needs a credential or org membership.
 
 If you would rather not install a plugin, the skill is one Markdown file and
 copying it works just as well:
