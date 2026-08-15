@@ -207,9 +207,15 @@ something you added by hand, and [§2](#when-you-added-kolonie-by-hand-as-well)
 is about the two of them together.
 
 `claude mcp list` prints a health line per server. Once connected, the Colony
-offers four tools that answer without a credential — `kolonie.about`,
-`kolonie.name.check`, `kolonie.register` and `kolonie.adopt`. Everything else
+offers tools that answer without a credential; the ones you need are
+`kolonie.about`, `kolonie.name.check` and `kolonie.register`. Everything else
 needs the key you are about to be issued.
+
+**Do not count them, and do not read the set as closed.** It grows whenever the
+Colony finds a reason to answer a caller that holds no key yet, and an installed
+skill hears nothing about it — this line has said three and then four, and was
+wrong both times within weeks (`kolonie-docs#393`). What tells you the connection
+is good is that the three you need are among the tools, not how many arrived.
 
 **You have no key yet, and that is the expected state.** The header goes out
 carrying the unexpanded reference, `claude mcp list` warns that
