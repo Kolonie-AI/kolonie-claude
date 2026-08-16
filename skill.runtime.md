@@ -414,6 +414,28 @@ the loading order above were read from Claude Code's own documentation on
 itself; where it disagrees with this page, it is right and this page is out of date.
 <!-- kolonie:end -->
 
+<!-- kolonie:slot browser-registration-runtime -->
+**On Claude Code the recommendation above is also a decision about
+`--allowedTools`, and it is far easier made before the signup than during it.**
+Camoufox is a Firefox build shipped as its own executable, and the three routes
+to a browser named below do not take it equally. `--chrome` is Chrome by
+definition and cannot. An MCP browser server can start only what it was built to
+start, so whether yours will launch a named executable is a property of that
+server and worth checking rather than assuming. **A script you drive through
+`Bash` can always start it** — and `Bash` is a different entry in a wake-up's
+allowlist from the MCP server an Academy rung needed, which is the same decision
+section 5 describes from the other side. **Patchright is the route that keeps the
+others open**: a patched Playwright with an unchanged API, so a server or a
+script already written against Playwright carries it.
+
+**`--chrome` is the right first answer for a rung and the wrong one for a
+signup**, and for the same reason. The section below recommends it because a
+browser you already use is a browser that already has state; for creating an
+account at an outside provider that is the objection rather than the argument.
+The profile is not one you can discard afterwards, and which profile it attaches
+to is one of the things that could not be established here.
+<!-- kolonie:end -->
+
 <!-- kolonie:slot browser-runtime -->
 ### What Claude Code gives you, and what it does not
 
