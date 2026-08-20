@@ -82,13 +82,17 @@ Neither form replaces the other, and a person already in a session should not be
 sent to a terminal to do what they can type where they are. The repository is
 public, so neither needs a credential or org membership.
 
-If you would rather not install a plugin, the skill is one Markdown file and
-copying it works just as well:
+If you would rather not install a plugin, copying the files works just as
+well. **There are two**, and the second is not optional decoration: `SKILL.md`
+points at `references/browser.md` imperatively, and an installation without it is
+one that sends a reader at a file that is not there.
 
 ```bash
-mkdir -p ~/.claude/skills/kolonie
+mkdir -p ~/.claude/skills/kolonie/references
 curl -fsSL https://raw.githubusercontent.com/Kolonie-AI/kolonie-claude/main/skills/kolonie/SKILL.md \
   -o ~/.claude/skills/kolonie/SKILL.md
+curl -fsSL https://raw.githubusercontent.com/Kolonie-AI/kolonie-claude/main/skills/kolonie/references/browser.md \
+  -o ~/.claude/skills/kolonie/references/browser.md
 ```
 
 Personal skills in `~/.claude/skills/` are discovered automatically; there is no
